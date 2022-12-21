@@ -1,0 +1,24 @@
+alias dcu="docker compose up"
+alias dcd="docker compose down"
+alias dcr="docker compose restart"
+alias dcl="docker compose logs -ft"
+alias dlu="sudo sh -c 'du -ch /var/lib/docker/containers/*/*-json.log'"
+
+alias c="clear"
+alias ls="exa --icons -a"
+alias l="exa -albF --icons --git"
+alias ll="exa -albGF --git --icons --sort=modified"
+alias lt="exa -a --icons --tree --level=2"
+
+alias gff="git flow feature"
+# Lazy commit
+alias giz="git add . && git commit -m '.' && git push"
+alias e="nvim"
+alias mc='LANG=en_EN.UTF-8 mc'
+alias icat="kitty +kitten icat"
+alias chmox="chmod +x"
+alias zshconf="$EDITOR ~/.zshrc"
+alias e="$EDITOR"
+
+alias myip="curl ifconfig.me"
+alias nf="$FETCH"

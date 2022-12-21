@@ -1,0 +1,32 @@
+export ZSH="$HOME/.oh-my-zsh"
+
+ZSH_THEME="michelebologna"
+
+plugins=(
+  git
+  zsh-syntax-highlighting
+  fast-syntax-highlighting
+  zsh-autosuggestions
+)
+
+export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+# ascii title os host kernel uptime pkgs memory shell editor wm de palette
+export PF_INFO="ascii title os host kernel wm shell memory palette"
+export FETCH="pfetch"
+
+export EDITOR="nvim"
+export MOST_INITFILE="$HOME/.config/most/mostrc"
+export PAGER="most"
+export XDG_CONFIG_HOME="$HOME/.config"
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+export BAT_THEME="Catppuccin-mocha"
+export GTK_THEME="Catppuccin-Mocha-Standart-Blue-Dark"
+
+source $ZSH/oh-my-zsh.sh
+source $HOME/.aliases
+source "$HOME/.cargo/env"
+
+eval "$(zoxide init zsh)"
+
+

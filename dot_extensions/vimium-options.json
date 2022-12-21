@@ -1,0 +1,26 @@
+{
+  "settingsVersion": "1.67.4",
+  "exclusionRules": [
+    {
+      "pattern": "https?://mail.google.com/*",
+      "passKeys": ""
+    }
+  ],
+  "filterLinkHints": false,
+  "waitForEnterForFilteredHints": true,
+  "hideHud": false,
+  "keyMappings": "# Insert your preferred key mappings here\n# --- RUS ---\nmap  , showHelp\nmap  о scrollDown\nmap  л scrollUp\nmap  р scrollLeft\nmap  д scrollRight\nmap  пп scrollToTop\nmap  П scrollToBottom\nmap  яР scrollToLeft\nmap  яД scrollToRight\nmap  <с-у> scrollDown\nmap  <с-н> scrollUp\n\nmap  в scrollPageDown\nmap  г scrollPageUp\nmap  к reload\nmap  пы toggleViewSource\n\nmap  ш enterInsertMode\n\nmap  Р goBack\nmap  Д goForward\nmap  пг goUp\nmap  пГ goToRoot\n\nmap  пш focusInput\n\nmap  а LinkHints.activateMode\nmap  А LinkHints.activateModeToOpenInNewTab\nmap  <a-а> LinkHints.activateModeWithQueue\n\nmap  . enterFindMode\nmap  т performFind\nmap  Т performBackwardsFind\n\nmap  хх goPrevious\nmap  ъъ goNext\n\nmap  нн copyCurrentUrl\nmap  на LinkHints.activateModeToCopyLinkUrl\n\nmap  з openCopiedUrlInCurrentTab\nmap  З openCopiedUrlInNewTab\n\nmap  Л nextTab\nmap  О previousTab\nmap  пе nextTab\nmap  пЕ previousTab\nmap  п0 firstTab\nmap  п; lastTab\n\n\nmap  Ц moveTabToNewWindow\nmap  е createTab\nmap  не duplicateTab\nmap  ч removeTab\nmap  Ч restoreTab\n\nmap  щ Vomnibar.activate\nmap  Щ Vomnibar.activateInNewTab\n\nmap  Е Vomnibar.activateTabSelection\n\nmap  и Vomnibar.activateBookmarks\nmap  И Vomnibar.activateBookmarksInNewTab\n\nmap  па nextFrame\n\nmap  ь Marks.activateCreateMode\nmap  ё Marks.activateGotoMode\n\nmap  <a-з> togglePinTab\n\nmap  ББ moveTabLeft\nmap  ЮЮ moveTabRight\n\nmap  м enterVisualMode\nmap  М enterVisualLineMode\n# ------",
+  "linkHintCharacters": "sadfjklewcmpgh",
+  "linkHintNumbers": "0123456789",
+  "newTabUrl": "about:newtab",
+  "nextPatterns": "next,more,newer,>,›,→,»,≫,>>",
+  "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<",
+  "regexFindMode": false,
+  "ignoreKeyboardLayout": false,
+  "scrollStepSize": 60,
+  "smoothScroll": true,
+  "grabBackFocus": false,
+  "searchEngines": "w: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\n\n# More examples.\n#\n# (Vimium supports search completion Wikipedia, as\n# above, and for these.)\n#\n# g: https://www.google.com/search?q=%s Google\n# l: https://www.google.com/search?q=%s&btnI I'm feeling lucky...\n# y: https://www.youtube.com/results?search_query=%s Youtube\n# gm: https://www.google.com/maps?q=%s Google maps\n# b: https://www.bing.com/search?q=%s Bing\n# d: https://duckduckgo.com/?q=%s DuckDuckGo\n# az: https://www.amazon.com/s/?field-keywords=%s Amazon\n# qw: https://www.qwant.com/?q=%s Qwant",
+  "searchUrl": "https://www.google.com/search?q=",
+  "userDefinedLinkHintCss": "#vimiumHintMarkerContainer div.internalVimiumHintMarker, #vimiumHintMarkerContainer div.vimiumHintMarker {\n  padding: 3px 4px;\n  background: #FAB387; /* peach */\n  border: 1;\n  border-color: #181825; /* mantle */\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);\n}\n\n#vimiumHintMarkerContainer div span {\n  color: #181825; /* mantle */\n  text-shadow: none;\n}\n\n#vimiumHintMarkerContainer div > .matchingCharacter {\n  opacity: 1.0;\n}\n\n#vimiumHintMarkerContainer div > .matchingCharacter ~ span {\n  color: #585B70; /* surface2 */\n}\n\n#vomnibar {\n  background: #1E1E2E; /* base */\n  border: 2px solid #B4BEFE; /* lavender */ \n  animation: show 200ms cubic-bezier(0, 0, 0.2, 1) forwards;\n}\n\n@keyframes show {\n  0% {\n    transform: translateY(50px);\n    opacity: 0;\n  }\n  100% {\n    transform: translateY(0);\n    opacity: 1;\n  }\n}\n\n#vomnibar input {\n  color: #CDD6F4; /* text */\n  font: -moz-window;\n  background: #1E1E2E; /* base */\n  border: none;\n  padding: 2;\n}\n\n#vomnibar .vomnibarSearchArea {\n  padding: 10px 30px;\n  border: none;\n  background: #1E1E2E; /* base */\n}\n\n#vomnibar ul {\n  padding: 0;\n  background: #1E1E2E; /* base */\n  border-top: 1px solid #313244; /* surface0 */\n}\n\n#vomnibar li {\n  padding: 10px;\n  border-bottom: 1px solid #313244; /* surface0 */\n}\n\n#vomnibar li .vomnibarTopHalf,\n#vomnibar li .vomnibarBottomHalf {\n  padding: 3px 0;\n}\n\n#vomnibar li .vomnibarSource {\n  color: #FAB387; /* peach */ \n}\n\n#vomnibar li em,\n#vomnibar li .vomnibarTitle {\n  color: #89B4FA; /* blue */\n  font-weight: bold;\n}\n\n#vomnibar li .vomnibarUrl {\n  color: #F5E0DC; /* rosewater */\n}\n\n#vomnibar li .vomnibarMatch {\n  color: #A6E3A1; /* green */\n  font-weight: bold;\n}\n\n#vomnibar li .vomnibarTitle .vomnibarMatch {\n  color: #89B4FA; /* blue */\n}\n\n#vomnibar li.vomnibarSelected {\n  background-color: #313244; /* surface0 */\n}\n\ndiv.vimiumHUD {\n  background: #1E1E2E; /* base */\n  border: none;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);\n}\n\ndiv.vimiumHUD span#hud-find-input,\ndiv.vimiumHUD .vimiumHUDSearchAreaInner {\n  color: #CDD6F4; /* text */\n}\n\ndiv.vimiumHUD .hud-find {\n  background-color: #1E1E2E; /* base */\n  border: none;\n}\n\ndiv.vimiumHUD .vimiumHUDSearchArea {\n  background-color: #1E1E2E; /* base */\n}"
+}
