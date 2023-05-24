@@ -1,10 +1,12 @@
 #!/bin/sh
 
-music_dir="$MUSIC_DIR"
-preview_dir="$XDG_CONFIG_HOME/ncmpcpp/previews"
-filename="$(mpc --format "$music_dir"/%file% current)"
-preview_name="$preview_dir/$(mpc --format %album% current | base64).png"
+readonly MUSIC_DIR="${HOME}/Music"
+readonly SONG_PATH="$(mpc --format '%file%' current)"
+readonly SONG_DIR="$(dirname "${SONG_PATH}")"
+readonly ALBUM_ART_PATH="${MUSIC_DIR}/${SONG_DIR}/Folder.jpg"
 
-[ -e "$preview_name" ] || ffmpeg -y -i "$filename" -an -vf scale=128:128 "$preview_name" > /dev/null 2>&1
+# if [[ ! -f "${ALBUM_ART_PATH}" ]]; then # file doesn't exist
+# 	ALBUM_ART_PATH="" # TODO: insert path to generic icon here
+# fi
 
-notify-send -a "🎶 MPD" -i $XDG_CONFIG_HOME/ncmpcpp/previews/RGlzY29ncmFwaHkK.png "Now Playing" "$(mpc --format '%artist% \n%title% - %album%' current)" 
+notify-send -i "${ALBUM_ART_PATH}" "Now Playing" "$(mpc --format '%title% - %artist%' current)"

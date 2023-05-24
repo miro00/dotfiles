@@ -1,0 +1,43 @@
+# vim:ft=conf
+
+include ~/.config/newsboat/dark
+
+# --- Settings ---
+#auto-reload yes
+#browser "$BROWSER %u"
+browser "~/snippets/link_handler.sh %u"
+notify-always yes
+notify-program notify-send
+player mpv
+
+# --- Filters ---
+ignore-mode "display"
+ignore-article "https://www.reddit.com/r/unixporn.rss" "title !~ \"bspwm\""
+
+# --- Macros ---
+macro v set browser "setsid -f mpv --really-quiet --no-terminal" ; open-in-browser ; set browser "$BROWSER %u"
+
+# --- Key Bindings ---
+# jk - move up/down
+unbind-key j
+unbind-key k
+bind-key j down
+bind-key k up
+
+# hl - move in/out of feeds/articles
+bind-key h quit
+bind-key l open
+
+# q quits the program
+unbind-key q
+bind-key q hard-quit
+
+# g/G to go to top/bottom
+unbind-key g
+unbind-key G
+bind-key g home
+bind-key G end
+
+# f to follow links (like qutebrowser)
+unbind-key f
+bind-key f goto-url

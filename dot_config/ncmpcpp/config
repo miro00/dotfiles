@@ -1,3 +1,4 @@
+# vim:ft=conf
 ncmpcpp_directory = ~/.config/ncmpcpp
 mpd_host = localhost
 mpd_port = 6600
@@ -8,10 +9,15 @@ visualizer_output_name = "my_fifo"
 visualizer_in_stereo = "yes"
 # Available values: spectrum, wave, wave_filled, ellipse.
 visualizer_type = "spectrum"
-visualizer_look = "+|"
+visualizer_look = "●┃"
 
-execute_on_song_change = notify-send -t 2000 -a "🎶 MPD" "Now Playing" "$(mpc --format '%artist% \n%title% - %album%' current)" 
+#execute_on_song_change = ~/.config/ncmpcpp/songinfo
 
+progressbar_look = "▒▒░"
+user_interface = "alternative"
+
+external_editor = nvim
+use_console_editor = yes
 #mpd_crossfade_time = 5
 ##### music visualizer #####
 ##

@@ -1,14 +1,17 @@
 # xev -event keyboard
 # terminal emulator
 super + Return
-	kitty
+	alacritty
+
+super + e
+  pcmanfm
 
 super + shift + Return
   kitty --class floating_kitty
 
 # program launcher
 super + d
-  rofi -show run
+  rofi -show drun
   #dmenu_run
 
 # make sxhkd reload its configuration files:
@@ -95,7 +98,7 @@ super + alt + {h,j,k,l}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # contract a window by moving one of its side inward
-super + alt + shift + {h,j,k,l}
+super + alt + ctrl + {h,j,k,l}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # move a floating window
@@ -108,6 +111,21 @@ super + shift + {Left,Down,Up,Right}
   bspc node -s "$dir.local" --follow \
     || bspc node -m "$dir" --follow
 
+# --- system ---
+super + {F1,F2}
+  systemctl {poweroff,reboot}
+
+# --- Toggle VPN ---
+super + F3
+  ~/snippets/toggle_vpn.sh
+
+# --- Toggle redshift ---
+super + F4
+  pkill -USR1 '^redshift$'
+
+super + F5
+  ~/snippets/toggle_notifications.sh
+
 # --- media ---
 XF86Audio{Raise,Lower}Volume
   pactl set-sink-volume @DEFAULT_SINK@ {+,-}1%
@@ -115,14 +133,24 @@ XF86Audio{Raise,Lower}Volume
 XF86AudioMute
   amixer -q set Master toggle
 
+XF86Audio{Prev,Next}
+  mpc {prev,next} 
+
+XF86AudioPlay
+  mpc toggle
+
 # --- other ---
 # pick color and copy to clipboard
-super + {_,shift + } c
+super + shift + c
   grabc | tr -d '\n' | xclip -selection clipboard
 
 # make screenshot selected area
 Print
-  maim -s | xclip -selection clipboard -t image/png  
+  flameshot gui
+  #maim -s -u -b 2 -c 0.53725,0.70588,0.98039,1 | xclip -selection clipboard -t image/png
+
+shift + Print
+  flameshot full -c -p ~/Pictures/screenshots/ --region 1920x1080+0+0
 
 # Pass menu
 super + p
@@ -131,3 +159,12 @@ super + p
 # Launch Btop https://github.com/aristocratos/btop
 ctrl + alt + Delete
   killall btop 2>/dev/null || kitty --class btop btop
+
+#super + e
+#  rofi -modi emoji -show emoji -emoji
+
+super + x
+  ~/snippets/sgpt_rofi.sh
+
+super + b
+  chromium

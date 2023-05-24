@@ -1,31 +1,32 @@
-#! /bin/sh
+#!/usr/bin/env sh
+
+MONITOR0="HDMI-0"
+MONITOR1="DP-0"
+PRIMARY_COLOR="#89B4FA"
+GAMES_DESKTOP="^3"
+
+first_empty_desktop() {
+  bspc query -D -d 'next.!occupied'
+}
+
+launch() {
+  local running
+  running=$(pgrep -x "$1")
+  [ $running ] && kill -9 $(pgrep -x $1) 2> /dev/null
+  eval "$* &"
+}
 
 # --- Monitors ---
-xrandr --output HDMI-0 --primary
-xrandr --output DP-0 --mode 1280x1024 --rate 75.02
-xrandr --output HDMI-0 --left-of DP-0
-
-# --- Autostart Daemons ---
-pgrep -x sxhkd > /dev/null || sxhkd &
-pgrep -x picom > /dev/null || picom &
-pgrep -x feh > /dev/null || ~/.fehbg &
-pgrep -x polybar > /dev/null || polybar &
+xrandr --output $MONITOR0 --primary 
+xrandr --output $MONITOR1 --mode 1280x1024 --rate 75.02
+xrandr --output $MONITOR0 --left-of $MONITOR1
 
 # --- Keyboard Layout ---
-setxkbmap -option grp:alt_shift_toggle us,ru &
+#setxkbmap -option grp:alt_shift_toggle us,ru &
 
-# --- Catppuccin Theme ---
-xsetroot -cursor_name "Catppuccin Mocha Dark"
-[[ -f ~/.config/.Xresources ]] && xrdb -merge ~/.config/.Xresources
-
-# --- Initial Scripts ---
-~/.config/bspwm/update-notifier
-pass git pull
-
-telegram-desktop
-
-# --- bspc settings ---
-bspc monitor -d 一 二 三 四 五 六 七 八 九 
+# --- bspc settings --- 
+bspc monitor $MONITOR0 -d 一 二 三 四 五
+bspc monitor $MONITOR1 -d 六 七 八 九 
 
 bspc config border_width         2
 bspc config window_gap           5
@@ -33,13 +34,54 @@ bspc config split_ratio          0.5
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
-bspc config focused_border_color "#89b4fa"
+bspc config focused_border_color "$PRIMARY_COLOR"
 
-bspc rule -a TelegramDesktop desktop='Desktop' state=floating follow=on rectangle=870x625+2143+183
+bspc config external_rules_command ~/.config/bspwm/external_rules.sh
+
+bspc rule -a Zathura state=tiled
+bspc rule -a TelegramDesktop desktop='^6' state=floating follow=off rectangle=870x625+2143+183
+bspc rule -a Mattermost:mattermost desktop='^6'
 bspc rule -a firefox:Navigator desktop='^2' follow=on
 bspc rule -a firefox:Toolkit:"Picture-in-Picture" state=floating
-bspc rule -a discord:discord desktop='Desktop' state=floating follow=on
-bspc rule -a btop state=floating center=on follow=on rectangle=1142x773+389+153
+bspc rule -a Chromium desktop='^2' follow=on
+bspc rule -a *:*:"Task Manager - Chromium" state=floating follow=on rectangle=829x838+536+124 center=on
+bspc rule -a discord:discord desktop='^6' state=floating follow=off
+bspc rule -a btop state=floating center=on follow=on rectangle=1240x773+389+153
 bspc rule -a floating_kitty state=floating center=on follow=on rectangle=800x500+514+323
 bspc rule -a obsidian desktop='^3'
-bspc rule -a Steam:Steam desktop='^5' follow=on
+bspc rule -a Steam:Steam:Steam desktop='^5' 
+bspc rule -a Steam:Steam:"Friends List" state=floating
+bspc rule -a qFlipper:qFlipper state=floating rectangle=861x532+517+271 center=on border=off
+bspc rule -a Inkscape desktop='^3'
+bspc rule -a "photoshop.exe" desktop='^3' state=floating border=off
+bspc rule -a GLava:GLava desktop='^6' border=off
+bspc rule -a "xonotic-sdl":"xonotic-sdl" desktop='^5' state=fullscreen
+bspc rule -a "leagueclientux.exe":"leagueclient.exe" desktop="$GAMES_DESKTOP" state=floating center=on border=off
+bspc rule -a "riotclientux.exe":"riotclientux.exe" desktop="$GAMES_DESKTOP"
+bspc rule -a *:*:"Picture in picture" state=floating 
+bspc rule -a Pcmanfm:pcmanfm state=floating center=on rectangle=1200x600+0+0
+bspc rule -a Thunar:Thunar state=floating center=on rectangle=1200x600+0+0
+bspc rule -a Yad:Yad:"yad-calendar" state=floating
+bspc rule -a portal2_linux:portal2_linux state=fullscreen desktop="$GAMES_DESKTOP"
+bspc rule -a "gw2-64.exe":"gw2-64.exe" state=tiled desktop="$GAMES_DESKTOP"
+bspc rule -a TradingView:tradingview desktop="^1" 
+
+# --- Autostart ---
+pgrep -x sxhkd > /dev/null || sxhkd &
+pgrep -x picom > /dev/null || picom &
+pgrep -x feh > /dev/null || ~/.fehbg &
+pgrep -x easyeffects > /dev/null || easyeffects --gapplication-service &
+pgrep -x polybar > /dev/null || polybar &
+pgrep telegram > /dev/null || telegram-desktop -autostart &
+pgrep -x conky > /dev/null || conky &
+pgrep -x redshift-gtk > /dev/null || redshift-gtk &
+#pgrep -x birdtray > /dev/null || birdtray &
+
+# --- Catppuccin Theme ---
+[[ -f ~/.config/.Xresources ]] && xrdb -merge ~/.config/.Xresources
+xsetroot -cursor_name left_ptr &
+
+# --- Initial Scripts ---
+~/.config/bspwm/update-notifier.sh
+pass git pull --rebase
+

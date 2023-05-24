@@ -1,0 +1,4 @@
+# vim:ft=conf
+include catppuccin-mocha
+set recolor "true"
+set adjust-open "width"

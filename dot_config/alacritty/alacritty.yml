@@ -1,0 +1,43 @@
+import:
+  - ~/.config/alacritty/catppuccin-mocha.yml
+
+cursor:
+  style: 
+    shape: Block
+    blinking: Always
+    blink-interval: 400
+
+env:
+  TERM: xterm-256color
+
+font:
+  normal:
+    family: JetBrainsMono Nerd Font
+    style: Regular
+
+  bold:
+    family: JetBrainsMono Nerd Font
+    style: Bold
+
+  italic:
+    family: JetBrainsMono Nerd Font
+    style: Italic
+
+  bold_italic:
+    family: JetBrainsMono Nerd Font
+    style: Bold Italic
+
+  size: 13
+
+hints:
+  enabled:
+    - regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
+              [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+      command: xdg-open
+      post_processing: true
+      mouse:
+        enabled: true
+        mods: Control
+
+key_bindings:
+  - { key: Return, mods: Control|Shift, action: SpawnNewInstance }
