@@ -1,0 +1,7 @@
+[Unit]
+Description = "Watch if ~/.config/polybar/config.ini is changed"
+After = graphical.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/polybar-msg cmd restart

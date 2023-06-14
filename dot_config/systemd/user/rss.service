@@ -1,0 +1,7 @@
+[Unit]
+Description="Newsboat notifications"
+After=default.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/newsboat -x reload

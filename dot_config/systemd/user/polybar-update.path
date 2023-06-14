@@ -1,0 +1,5 @@
+[Path]
+PathModified=%h/.config/polybar/config.ini
+
+[Install]
+WantedBy=default.target
