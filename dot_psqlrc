@@ -1,0 +1,14 @@
+\set QUIET 1
+
+\set PROMPT1 '\[%M\]:%[%033[1;32m%]%>%[%033[0m%] %n@%/%R%#%x '
+\set PROMPT2 '%M %n@%/%R %# '
+
+\pset linestyle unicode
+\pset border 2
+\pset null '[null]'
+\timing
+\set HISTSIZE 5000
+\x auto
+
+\set QUIET 0
+

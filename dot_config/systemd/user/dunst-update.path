@@ -1,0 +1,5 @@
+[Path]
+PathModified=%h/.config/dunst/dunstrc
+
+[Install]
+WantedBy=default.target

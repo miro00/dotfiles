@@ -1,0 +1,7 @@
+[Unit]
+Description = "Watch if ~/.config/dunst/dunstrc is changed"
+After = graphical.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/snippets/dunst-reload.sh
