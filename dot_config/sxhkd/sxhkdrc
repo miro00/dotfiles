@@ -7,7 +7,7 @@ super + e
   pcmanfm
 
 super + shift + Return
-  kitty --class floating_kitty
+  alacritty --class floating_alacritty
 
 # program launcher
 super + d
@@ -158,7 +158,7 @@ super + p
 
 # Launch Btop https://github.com/aristocratos/btop
 ctrl + alt + Delete
-  killall btop 2>/dev/null || kitty --class btop btop
+  killall btop 2>/dev/null || alacritty --class btop -e btop
 
 #super + e
 #  rofi -modi emoji -show emoji -emoji
